@@ -44,7 +44,7 @@ input[type=button]:hover {
 CSS의 selector가 올수 있다..
 */    
 $(function(){ //onLoad되면....
-    $("input[type=button]").click(function(){ 
+    $($("input[type=button]")[0]).click(function(){ 
         //유효성 체크 
         if($("#user_id").val()==""){
             alert("아이디를 입력하세요");
@@ -54,6 +54,11 @@ $(function(){ //onLoad되면....
         $("form").attr("action", "/member/join");//이 요청을 받을 서버의 주소
         $("form").attr("method", "post"); //전송방식을 post로 지정
         $("form").submit(); //폼양식에 입력한 데이터를 서버로 전송~~~~
+    });
+
+    //두번째 버튼을 누르면, 목록 요청 
+    $($("input[type=button]")[1]).click(function(){
+      location.href="/member/list"; //get 방식의 요청!!
     });
 });
 
@@ -85,6 +90,7 @@ $(function(){ //onLoad되면....
     <!-- input 태그의 type중 submit은 디폴트로 전송기능이 포함되어 있기 때문에 
     클릭만으로도, 전송이 발생함 , 따라서 일반 버튼화시켜놓자 -->
     <input type="button" value="Submit">
+    <input type="button" value="목록으로">
 
   </form>
 </div>
